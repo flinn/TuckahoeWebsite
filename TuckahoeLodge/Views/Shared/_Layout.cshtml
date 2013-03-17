@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Titan+One' rel='stylesheet' type='text/css'>    
+    @Styles.Render("~/Content/css")    
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>    
+    <div id="outer">
+        <div id="tophat">
+            @using (Html.BeginForm("LoginUser", "Home", new { LoginModel = Model }, FormMethod.Post))
+            { 
+            <div id="loginErrorView">
+                <span class="errorText">Your username and password were incorrect. Please try again.</span>
+            </div>
+            <div id="loginView">
+                <label for="userName" id="userNameLabel" class="topHatText">Name:</label>
+                <input for="userName" id="userName" class="loginText" type="text" />
+                <label for="passWord" id="passwordLabel" class="topHatText">Password:</label>
+                <input for="passWord" id="password" class="loginText" type="password" />
+                <a id="logIn" class="linkButton">Login</a>
+            </div>
+            }
+            <div id="welcomeView">
+                <label for="welcomeMessage" id="welcomeMessage" class="loginLabel">Welcome, <span id="loggedUsername" class="usernameHeader"></span>! Enjoy your stay.</label>
+                <a id="logOut" class="linkButton">Log Out</a>
+            </div>
+            
+        </div>
+        <div id="header"><span id="headerText">Tuckahoe<br />Lodge</span><img src="~/Content/images/TuckahoeLodge_Banner.png" class="headerimage" /></div>
+        <div class="navcontainer">
+        <div id="cssmenu">
+            <ul>
+               <li><a href="@Url.Action("Index", "Home")"><span>Welcome</span></a></li>
+               <li class="has-sub "><a href="#" class="nohover"><span>Tuckahoe Traditions</span></a>
+                  <ul>
+                     <li><a href="@Url.Action("Wall", "Beerchug")"><span><span class="carrot">&#168;</span> ABC Wall</span></a></li>
+                     <li><a href="@Url.Action("CowboyCafe","Traditions")"><span><span class="carrot">&#168;</span> Cowboy Cafe</span></a></li>
+                     <li><a href="@Url.Action("Gauntlet","Traditions")"><span><span class="carrot">&#168;</span> The Gauntlet</span></a></li>
+                     <li><a href="@Url.Action("AlumniNetwork","Traditions")"><span><span class="carrot">&#168;</span> Alumni Network</span></a></li>
+                  </ul>
+               </li>
+               <li id="alert" class="alert"><a href="@Url.Action("Wanted", "Roommate")"><span>Roommate Wanted!</span></a></li>
+               <li class="has-sub "><a href="#" class="nohover"><span>Meet the Lodgers</span></a>
+                  <ul>
+                     <li><a href="@Url.Action("Current","Lodgers")"><span><span class="carrot">&#168;</span> Current Lodgers</span></a></li>
+                     <li><a href="@Url.Action("HallOfHonor","Lodgers")"><span><span class="carrot">&#168;</span> Hall of Honor</span></a></li>
+                  </ul>
+               </li>
+               <li><a href="@Url.Action("Index","Contact")"><span>Contact Us</span></a></li>
+            </ul>
+        </div>
+        </div>
+        @RenderSection("viewscript", required: false)
+        <div id="main">
+            <div id="leftbox">                
+                <img src="~/Content/images/poolFunUnlimited.jpg" class="leftSideImage" />
+            </div>
+            <div id="rightbox">
+                <div class="innerTubeWaterPolo">
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="clr"></div>        
+            <div id="footer">
+                <p class="footerText"><b>© 2013 Tuckahoe Lodge Alumni Association. All Rights Reserved.</b>&nbsp;&nbsp;&nbsp;</p>
+            </div>
+        </div>        
+    </div>    
+    
+    <script src="~/Scripts/Views/welcome.js"></script>    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

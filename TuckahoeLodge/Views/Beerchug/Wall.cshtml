@@ -1,0 +1,28 @@
+﻿@model  IList<TuckahoeLodge.Models.Beerchug>
+
+
+<h1>ABC Wall</h1>
+
+<a class="linkButton" style="position: relative; float: right; margin-top: -67px; right: 15px;" href="@Url.Action("CreateBeerchug","Beerchug")">Record New ABC</a>
+
+<p>Welcome to Tuckahoe Lodge's official <b>ABC</b> wall. For those of you who remain uninitiated, an <b>ABC</b> is the short-hand for an <b>Automatic Beer Chug</b>. The guidelines for performing a proper ABC can be found <a href="@Url.Action("Guidelines","Beerchug")">here</a></p>
+
+<table class="bordered">
+    <thead>
+        <th>Drinker</th>
+        <th>Beer Chug Time</th>
+        <th>Affiliated College</th>
+        <th>Approved By</th>
+    </thead>
+    <tbody>
+        @foreach (var beerchug in Model.OrderBy(b => b.TimeTaken))
+        { 
+            <tr>
+                <td><span style="font-weight: bold; color: #3f3f3f;">@beerchug.DrinkerName</span></td>
+                <td><span title="Seconds and Milliseconds">@beerchug.Time</span></td>
+                <td>@beerchug.DrinkerSchool (@beerchug.DrinkerGraduationYear.ToString())</td>
+                <td>@beerchug.ApprovingLodger</td>            
+            </tr>
+        }
+    <tbody>    
+</table>

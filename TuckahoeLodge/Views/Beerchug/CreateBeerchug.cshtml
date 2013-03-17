@@ -1,0 +1,77 @@
+﻿@model TuckahoeLodge.Models.Beerchug
+
+@{
+    ViewBag.Title = "Tuckahoe Lodge - Record ABC";
+}
+
+<div class="inputForm">
+<h1>Record New ABC</h1>
+
+<a class="linkButton" style="position: relative; float: right; margin-top: -67px; right: 15px;" href="@Url.Action("AllBeerchugs","Beerchug")">Back to Wall</a>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+        <div class="container">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.DrinkerName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.DrinkerName)
+                @Html.ValidationMessageFor(model => model.DrinkerName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.TimeTaken)
+            </div>    
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TimeTaken)
+                @Html.ValidationMessageFor(model => model.TimeTaken)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.DrinkerSchool)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.DrinkerSchool)
+                @Html.ValidationMessageFor(model => model.DrinkerSchool)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.DrinkerGraduationYear)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.DrinkerGraduationYear)
+                @Html.ValidationMessageFor(model => model.DrinkerGraduationYear)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ApprovingLodger)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ApprovingLodger)
+                @Html.ValidationMessageFor(model => model.ApprovingLodger)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Comment)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Comment)
+                @Html.ValidationMessageFor(model => model.Comment)
+            </div>                    
+        </div>
+        <br />
+        <div style="float: left; margin-left: 250px;">
+            <input type="submit" value="Record ABC" class="linkButton" />
+        </div>   
+    
+        <div>            
+            <br />
+            <br />
+        </div>
+}
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

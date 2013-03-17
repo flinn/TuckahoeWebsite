@@ -1,0 +1,10 @@
+﻿@model  TuckahoeLodge.ViewModels.LodgersViewModel
+@{
+    ViewBag.Title = "Current";
+}
+
+<h1>Current Lodgers</h1>
+
+@foreach(var bio in Model.Lodgers) {
+    @Html.RenderPartial("Bios", bio);
+}
